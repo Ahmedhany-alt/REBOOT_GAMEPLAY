@@ -1,4 +1,4 @@
-#class_name ESStun
+class_name ESStun
 extends Enemystate
 
 #@export var animation_name : String = "idle" 
@@ -46,9 +46,9 @@ func physics_update(delta: float) -> void:
 	pass
 
 
-#func _calc_velocity( a : AttackArea ) -> void:
-	#vel_x = 1
-	#if a.global_position.x > enemy.global_position.x:
-		#vel_x = -1
-	#vel_x *= knockback_strengh
+func _calc_velocity( a : AttackArea ) -> void:
+	vel_x = 1
+	if a.global_position.x > enemy.global_position.x:
+		vel_x = -1
+	vel_x *= knockback_strengh
 	pass

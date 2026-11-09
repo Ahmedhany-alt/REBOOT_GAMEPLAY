@@ -2,7 +2,7 @@
 class_name Enemy extends CharacterBody2D
 
 signal direction_changed( new_dir )
-#signal was_hit( a : AttackArea )
+signal was_hit( a : AttackArea )
 signal was_killed()
 
 
@@ -12,8 +12,8 @@ signal was_killed()
 
 var sprite: Sprite2D
 var animation: AnimationPlayer
-#var damage_area: DamageArea
-#var hazard_area: HazardArea
+var damage_area: DamageArea
+var hazard_area: HazardArea
 
 var state_machine: EnemyStateMachine
 var decision_engine: DecisionEngine
@@ -36,14 +36,14 @@ func setup() -> void:
 			animation = c
 		elif c is Sprite2D and not sprite:
 			sprite = c
-		#elif c is DamageArea and not damage_area:
-			#damage_area = c 
-			#c.damage_taken.connect( _on_damage_taken )
-		#elif c is Hazard_Area and not hazard_area:
-			#hazard_area = c 
+		elif c is DamageArea and not damage_area:
+			damage_area = c 
+			c.damage_taken.connect( _on_damage_taken )
+		elif c is HazardArea and not hazard_area:
+			hazard_area = c 
 			
-		#elif c is EnemyStateMachine and not state_machine:
-			#state_machine = c 
+		elif c is EnemyStateMachine and not state_machine:
+			state_machine = c 
 		elif c is DecisionEngine and not decision_engine:
 			decision_engine = c
 		pass
@@ -86,12 +86,12 @@ func play_animation( anime_name : String ) -> void:
 
 
 #handle taking damage
-#func _on_damage_taken( a : AttackArea )  -> void:
-	#blackboard.damage_source = a
-	#blackboard.health -= a.damage
-	#if blackboard.health <= 0:
-		#damage_area.queue_free()
-		#hazard_area.queue_free()
-		#was_killed.emit( a )
-	#was_hit.emit( a )
+func _on_damage_taken( a : AttackArea )  -> void:
+	blackboard.damage_source = a
+	blackboard.health -= a.damage
+	if blackboard.health <= 0:
+		damage_area.queue_free()
+		hazard_area.queue_free()
+		was_killed.emit( a )
+	was_hit.emit( a )
 	pass

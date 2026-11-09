@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 VisualEffects="*uid://dbgxgyprcf6f0"
 PlayerHud="*uid://j1a5aori5eul"
 Messsages="*uid://bgq1qpqpjbpxe"
+
 [display]
 
 window/size/viewport_width=1920
@@ -28,9 +29,17 @@ window/size/window_height_override=810
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
-[editor_plugins]
+[file_customization]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+folder_colors={
+"res://Assets/": "red",
+"res://Assets/Enimies/": "red",
+"res://Assets/Tilesets&&&/": "yellow",
+"res://Scenes/": "yellow",
+"res://Scenes/Levels&&&/": "green",
+"res://Scripts/": "purple",
+"res://Scripts/Script_templites/": "teal"
+}
 
 [input]
 
@@ -88,16 +97,6 @@ action={
 2d_physics/layer_6="ENEMY"
 2d_physics/layer_7="BREAKABLE"
 2d_physics/layer_8="SLAMBREAKABLE"
-
-[file_customization]
-
-folder_colors={
-"res://Enimies/": "red",
-"res://Levels&&&/": "green",
-"res://Script_templites/": "teal",
-"res://Scripts/": "purple",
-"res://Tilesets&&&/": "yellow"
-}
 
 [physics]
 

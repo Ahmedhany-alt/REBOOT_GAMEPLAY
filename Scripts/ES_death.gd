@@ -28,11 +28,11 @@ func physics_update(delta: float) -> void:
 		blackboard.can_decide = true
 	pass
 
-	#func _calc_velocity( a : AttackArea ) -> void:
-	#vel_x = 1
-	#if a.global_position.x > enemy.global_position.x:
-		#vel_x = -1
-	#vel_x *= knockback_strengh
+func _calc_velocity( a : AttackArea ) -> void:
+	vel_x = 1
+	if a.global_position.x > enemy.global_position.x:
+		vel_x = -1
+	vel_x *= knockback_strengh
 	pass
 	
 	

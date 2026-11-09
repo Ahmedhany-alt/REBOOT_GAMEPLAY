@@ -1,4 +1,4 @@
-#class_name ESWalk
+class_name ESWalk
 extends Enemystate
 
 @export var walk_speed: float = 50 
